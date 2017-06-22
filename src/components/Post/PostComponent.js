@@ -16,7 +16,7 @@ class Post extends Component {
     }
 
     handleVisibilityClick() {
-        this.setState({visible: !this.state.visible});
+        this.setState(({ visible }) => ({ visible: !visible }));
     }
 
     render() {

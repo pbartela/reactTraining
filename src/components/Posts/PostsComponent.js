@@ -4,7 +4,7 @@ import { Post } from './../Post/';
 const Posts = props => {
     const { posts } = props;
     const postRender = [];
-    posts.forEach(function (post, index) {
+    posts.map(function (post, index) {
         postRender.push(<Post
             date={post.date}
             image={post.image}
