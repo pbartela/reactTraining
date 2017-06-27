@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run cleanBuild && webpack --progress --color --display-error-details && npm run copyStaticFiles",
-    "dev": "npm run cleanBuild && npm run copyStaticFiles && webpack --watch",
-    "watchDebug": "webpack --progress --color --watch --display-error-details",
-    "copyStaticFiles": "cp src/index.html public/ && cp src/styles.css public/",
-    "cleanBuild": "rm -rf public/*"
+    "build": "webpack --progress --color --display-error-details",
+    "dev": "webpack --watch --progress --color --display-error-details"
   },
   "author": "",
   "license": "ISC",

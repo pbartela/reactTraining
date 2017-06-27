@@ -60,11 +60,15 @@ typings/
 # dotenv environment variables file
 .env
 
-#vs code files
+# vs code files
 .vscode
 .history
 
-#public folder
-public/
+# public folder
+public/*
+
+# public folder
+!public/index.html
+!public/styles.css
 
 # End of https://www.gitignore.io/api/node
