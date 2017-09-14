@@ -1,6 +1,5 @@
 import React ,{ Component } from 'react';
 import PropTypes from 'prop-types';
-import renderHtml from './../../helpers/imageEmbeder'
 import { isEmpty } from 'lodash'; 
 import classNames from 'classnames';
 
@@ -41,7 +40,7 @@ class Post extends Component {
                             <strong>{userName}</strong>
                             <span className='text-muted'> {new Date()}</span>
                         </div>
-                        <div  className={panelBodyClassNames} dangerouslySetInnerHTML={renderHtml(children)} />
+                        <div  className={panelBodyClassNames}> </div>
                     </div>
                 </div>
             </div>

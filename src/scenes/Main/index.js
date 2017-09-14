@@ -34,6 +34,7 @@ class MainScene extends Component {
 
     render () {
         const { posts } = this.state;
+        console.log('DEBUG posts: ', posts);
         return (
             <div className='container-fluid'>
                 <div className='row'>

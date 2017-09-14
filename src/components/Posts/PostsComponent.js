@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { Post } from './../Post/';
 const Posts = props => {
     const { posts } = props;
-    const postRender = [];
-    posts.map(function (post, index) {
-        return postRender.push(<Post
+    const postRender = posts.map(function (post, index) {
+        return <Post
             image={post.image}
             key={index}
             username={post.username}
         >
             {post.value}
-        </Post>)
+        </Post>
     }, this);
+    console.log('DEBUG postRender: ', postRender);
     return (
         <div className='container'>
             <div className='row'>
