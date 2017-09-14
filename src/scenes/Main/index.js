@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
     Posts,
     TextArea
@@ -34,7 +33,7 @@ class MainScene extends Component {
     }
 
     render () {
-        const { post, posts } = this.state;
+        const { posts } = this.state;
         return (
             <div className='container-fluid'>
                 <div className='row'>

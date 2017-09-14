@@ -5,8 +5,7 @@ const Posts = props => {
     const { posts } = props;
     const postRender = [];
     posts.map(function (post, index) {
-        postRender.push(<Post
-            date={post.date}
+        return postRender.push(<Post
             image={post.image}
             key={index}
             username={post.username}
@@ -28,7 +27,6 @@ const Posts = props => {
 
 Posts.propTypes = {
     posts: PropTypes.arrayOf(PropTypes.shape({
-        date: PropTypes.number,
         username: PropTypes.string,
         image: PropTypes.string,
         value: PropTypes.string
