@@ -2,6 +2,7 @@ import React ,{ Component } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash'; 
 import classNames from 'classnames';
+import validUrl from 'valid-url';
 
 import userImageFallback from './../../img/avatar_2x.png';
 class Post extends Component {
@@ -18,10 +19,9 @@ class Post extends Component {
     }
 
     render() {
-        const { children, image, username } = this.props;
+        const { image, username } = this.props;
         const { visible } = this.state;
-        const userImage = isEmpty(image) ? userImageFallback : image;
-        const userName = isEmpty(username) ? 'Anonymous' : username;
+        const userImage = isEmpty(image) ? userImageFallback :validUrl.isWebUri(image) ? image : userImageFallback;
         const panelBodyClassNames = classNames('panel-body', { 'hidden': !visible });
         return (
             <div className='row' onClick={this.handleVisibilityClick}>
@@ -37,10 +37,9 @@ class Post extends Component {
                 <div className='post-column'>
                     <div className='panel panel-default'>
                         <div className='panel-heading'>
-                            <strong>{userName}</strong>
-                            <span className='text-muted'> {new Date()}</span>
+                            <strong>{username}</strong>
                         </div>
-                        <div  className={panelBodyClassNames}> </div>
+                        <div  className={panelBodyClassNames} />
                     </div>
                 </div>
             </div>
@@ -49,7 +48,6 @@ class Post extends Component {
 };
 
 Post.propTypes = {
-    children: PropTypes.node,
     image: PropTypes.string,
     username: PropTypes.string
 };

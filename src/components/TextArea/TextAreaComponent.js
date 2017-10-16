@@ -5,9 +5,9 @@ class TextArea extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.onHandleSubmitPost = this.onHandleSubmitPost.bind(this);
-        this.onHandleChangeImage = this.onHandleChangeImage.bind(this);
-        this.onHandleChangeUsername = this.onHandleChangeUsername.bind(this);
+        this.handleOnSubmitPost = this.handleOnSubmitPost.bind(this);
+        this.handleOnChangeImage = this.handleOnChangeImage.bind(this);
+        this.handleOnChangeUsername = this.handleOnChangeUsername.bind(this);
         this.state = {
             value: '',
             username: '',
@@ -19,21 +19,21 @@ class TextArea extends Component {
         this.setState({value: event.target.value});
     }
 
-    onHandleChangeImage(event) {
+    handleOnChangeImage(event) {
         this.setState({image: event.target.value});
     }
 
-    onHandleChangeUsername(event) {
+    handleOnChangeUsername(event) {
         this.setState({username: event.target.value});
     }
 
-    onHandleSubmitPost(event) {
+    handleOnSubmitPost(event) {
         event.preventDefault();
         const { onHandleSubmit } = this.props;
         const {  image, username, value } = this.state;
         const date = Date.now();
         onHandleSubmit({
-            username: username,
+            username: username || 'Anonymous',
             date: date,
             image: image,
             value: value
@@ -54,7 +54,7 @@ class TextArea extends Component {
                     <div className='col-md-6'>
                         <div className='widget-area no-padding blank'>
                             <div className='status-upload'>
-                                <form onSubmit={this.onHandleSubmitPost}>
+                                <form onSubmit={this.handleOnSubmitPost}>
                                     <textarea
                                         onChange={this.handleChange}
                                         placeholder='What is or your mind?'
@@ -64,7 +64,7 @@ class TextArea extends Component {
                                         <label className='name-input-label'>Name: </label>
                                         <input
                                             className='user-input'    
-                                            onChange={this.onHandleChangeUsername}
+                                            onChange={this.handleOnChangeUsername}
                                             type='text'
                                             value={this.state.username}
                                         />
@@ -72,7 +72,7 @@ class TextArea extends Component {
                                     <div>
                                         <label className='image-input-label'>Profile image: </label>
                                         <input
-                                            onChange={this.onHandleChangeImage}
+                                            onChange={this.handleOnChangeImage}
                                             type='text'
                                             value={this.state.image}
                                         /> 
