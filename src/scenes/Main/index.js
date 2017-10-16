@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
     Posts,
-    TextArea
+    TextArea,
+    TextFilter
 } from '../../components/';
 
 import { loadArray, saveArray } from './../../helpers/localStorageHelpers';
@@ -12,36 +13,54 @@ class MainScene extends Component {
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFilterChange =  this.handleFilterChange.bind(this);
         this.state = {
             post: {value: ''},
-            posts: []
+            posts: [],
+            filterValue: ''
         }
     }
 
     componentDidMount() {
         const posts = loadArray(storageKey);
-        posts && this.setState({posts: posts});
+        posts && this.setState({
+            posts: posts
+        });
+    }
+
+    handleFilterChange(value = '') {
+        this.setState({
+            filterValue: value
+        });
     }
 
     handleSubmit(post) {
         const { posts } = this.state;
+        
         const postArray = posts.concat(post);
         saveArray(storageKey, postArray);
         this.setState({
             posts: postArray,
-            value: '' });
+            value: ''
+        });
     }
 
-    render () {
-        const { posts } = this.state;
-        console.log('DEBUG posts: ', posts);
+    render() {
+        const { posts, filterValue } = this.state;
+        const filteredPosts = posts.filter(post => filterValue === '' || post.username.toLowerCase().indexOf(filterValue.toLowerCase()) > -1);
         return (
             <div className='container-fluid'>
                 <div className='row'>
-                    <Posts posts={posts} />
+                    <Posts posts={filteredPosts} />
                 </div>
                 <div className='row'>
                     <TextArea onHandleSubmit={this.handleSubmit} />
+                    <div>
+                        <label>
+                            Filter by username:    
+                        </label>    
+                        <TextFilter onChange={this.handleFilterChange} />
+                    </div>
                 </div>
             </div>
         )

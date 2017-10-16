@@ -12,7 +12,6 @@ const Posts = props => {
             {post.value}
         </Post>
     }, this);
-    console.log('DEBUG postRender: ', postRender);
     return (
         <div className='container'>
             <div className='row'>
