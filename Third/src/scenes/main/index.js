@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import mainStyles from './main.css';
-const MainScene = props => {
+const MainScene = ({ className, children, style}) => {
     return (
-        <div className={props.className} style={props.style}>
-            { props.children }
+        <div className={className} style={style}>
+            { children }
         </div>
     )
 }
