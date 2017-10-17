@@ -1,15 +1,12 @@
 import ReactDOM from 'react-dom';
-import React, { Component } from 'react';
+import React from 'react';
 
-
-class MainScene extends Component {
-    render() {
+const MainScene = () => {
         return (
             <div>
                 Hello world!
             </div>
         )
-    }
 }
 
 ReactDOM.render(<MainScene />, document.getElementById('app'));

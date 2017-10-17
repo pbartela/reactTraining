@@ -10,7 +10,7 @@ const Main2 = () => {
     return(
         <div>
             {Main1}
-            <MainScene>I'm under!</MainScene>
+            <MainScene style={{ fontSize: 40, color: 'white'}}>I'm under!</MainScene>
         </div> 
     );
 };
