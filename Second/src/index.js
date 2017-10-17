@@ -1,15 +1,17 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
-import React, { Component } from 'react';
+import MainScene from  './scenes/main';
 
+const Main1 = <MainScene clasName='container-fluid'>
+    <strong>I'm here! </strong>
+</MainScene>;
+const Main2 = () => {
+    return(
+        <div>
+            {Main1}
+            <MainScene>I'm under!</MainScene>
+        </div> 
+    );
+};
 
-class MainScene extends Component {
-    render() {
-        return (
-            <div>
-                Hello world!
-            </div>
-        )
-    }
-}
-
-ReactDOM.render(<MainScene />, document.getElementById('app'));
+ReactDOM.render(<Main2 />, document.getElementById('app'));
