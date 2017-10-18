@@ -19,6 +19,10 @@ class TextArea extends Component {
         this.setState({value: event.target.value});
     }
 
+    handleOnChangeImage(event) {
+        this.setState({image: event.target.value});
+    }
+
     handleOnChangeUsername(event) {
         this.setState({username: event.target.value});
     }
