@@ -50,7 +50,7 @@ class Post extends Component {
 };
 
 Post.propTypes = {
-    children: PropTypes.string,      
+    children: PropTypes.string,                
     image: PropTypes.string,
     username: PropTypes.string
 };

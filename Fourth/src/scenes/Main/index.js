@@ -27,8 +27,8 @@ class MainScene extends Component {
         return (
             <div className='container-fluid'>
                 <div className='row'>
-                <img src={image} alt={username} />
-                {value}{username}
+                    <img alt={username} src={image} />
+                    {value} {username}
                 </div>
                 <div className='row'>
                     <TextArea onHandleSubmit={this.handleSubmit} />

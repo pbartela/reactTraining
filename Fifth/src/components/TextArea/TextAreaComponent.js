@@ -31,10 +31,8 @@ class TextArea extends Component {
         event.preventDefault();
         const { onHandleSubmit } = this.props;
         const {  image, username, value } = this.state;
-        const date = Date.now();
         onHandleSubmit({
             username: username || 'Anonymous',
-            date: date,
             image: image,
             value: value
         });
