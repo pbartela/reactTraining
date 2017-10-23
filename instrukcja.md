@@ -54,7 +54,7 @@ import MainComponent from './scieżka_do_pliku/MainComponent';
 
 export { MainComponent, OtherComponent }; // Exportowanie dwóch obiektów z jednego pliku
 import { MainComponent, OtherComponent } from './scieżka_do_pliku/plik_exportujący';
-``` s
+
 Metody można łączyć:
 
 export default MainComponent;
