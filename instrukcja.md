@@ -56,7 +56,7 @@ export { MainComponent, OtherComponent }; // Exportowanie dwóch obiektów z jed
 import { MainComponent, OtherComponent } from './scieżka_do_pliku/plik_exportujący';
 ``` s
 Metody można łączyć:
-```javascript
+
 export default MainComponent;
 export { OtherComponent }; 
 
