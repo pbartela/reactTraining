@@ -128,6 +128,7 @@ var divStyle = {
 ReactDOM.render(<div style={divStyle}>Hello World!</div>, mountNode);
 ```
 https://react-cn.github.io/react/tips/style-props-value-px.html
+
 3. W podobny sposób co style można zaimportować obrazki i użyć ich później w kodzie.
    
    Zaimportuj avatar
