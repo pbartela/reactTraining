@@ -73,14 +73,14 @@ import { default as Main } from './scieżka_do_pliku/plik_exportujący';
 Pamiętaj: Aby wyrenderować więcej niż jeden komponent, muszą one mieć rodzica.
 Jeden komponent wyrenderuj przy pomocy komponentu prezentacyjnego, a drugi przy pomocy zmiennej.
 
-:x:
+Źle:
 ```javascript
 return (
      <div />
      <div />
 )
 ```
-:white_check_mark:
+Dobrze:
 ```javascript
 return (
     <div> 
@@ -114,7 +114,7 @@ return ReactDom.createPortal() ;
     `import './index.css`.
     Tak zaimportowane style mogą być użyte w w komponencie jak i każdym miejscu gdzie komponent je dostarczający zostanie       użyty.
     
-:interrobang: Przy importowaniu styli z cssów, React rozpoznaje duplikaty i dodaje je do wygenerowanego kodu tylko jeden raz.
+! Przy importowaniu styli z cssów, React rozpoznaje duplikaty i dodaje je do wygenerowanego kodu tylko jeden raz.
 
 ```
 /// https://react-cn.github.io/react/tips/inline-styles.html
@@ -146,9 +146,13 @@ Ostyluj go jeśli chcesz. Jako prop powinien przyjmować funkcję, przez którą
 this.state = {
     text:''           // inicjalizacja stanu
 }
-this.setState({     this.setState({       // metoda, która ustawia stan
-   text: text           text              // wywołanie jej powoduje wykonanie metody render
-})                  })                    // użyj jej do zapisania tekstu i wyswietlenia w komponencie   
+this.setState({     // metoda, która ustawia stan
+   text: text       // wywołanie jej powoduje wykonanie metody render
+})                  // użyj jej do zapisania tekstu i wyswietlenia w komponencie   
+
+this.setState({
+   text
+})
 
 this.setState(prevState=> {      this.setState((state, props) => {})
    text: prevState.text + 'new' 
