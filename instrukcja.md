@@ -14,20 +14,20 @@ co należy poprawić.
     npm install -g create-react-app
     create-react-app reactTraining
     cd reactTraining/
+    npm i -S prop-types
     npm start
 ```
-4. W pliku index.js stwórz `MainComponent` i dodaj walidację propsa children, który jest stringiem.
-   Jako, że jego rolą będzie wyłącznie wyświetlanie tekstu zadanie wykonaj przy pomocy komponentu prezentacyjnego.
-
-Walidacja proposów:
+4. W pliku index.js usuń wszystko i stwórz `MainComponent` i dodaj walidację propsa children, który jest stringiem.
 
 ```javascript
 // https://facebook.github.io/react/docs/typechecking-with-proptypes.html
 MainComponent.propTypes: {
-  todos: React.PropTypes.string.isRequired
+  children: React.PropTypes.string.isRequired
 }
 
 ```
+   Jako, że jego rolą będzie wyłącznie wyświetlanie tekstu zadanie wykonaj przy pomocy komponentu prezentacyjnego.
+
 5. Przypisz do zmiennej `MainScene` komponent, który jako props `children` przyjmuje tekst `Hello World!`.
 
 PropTypes children:
