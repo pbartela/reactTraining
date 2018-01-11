@@ -2,14 +2,14 @@
 Celem ćwiczenia będzie wykonanie bardzo prostej listy postów.
 Zadanie to pozwoli zapoznać się z kluczowymi elementami React'a
 
-Przy każdym zadaniu spoglądaj na konsolę oraz Chrome Dev Tools. W przypadku jakichkolwiek błędów zostanie wyświetlony komunikat
+Przy każdym zadaniu spoglądaj na konsolę oraz Chrome Dev Tools (Domyślnie: F12). W przypadku jakichkolwiek błędów zostanie wyświetlony komunikat
 co należy poprawić.
 
 ## Zadanie 1 - Create react i pierwszy komponent
 
 1. Stwórz folder na dysku
 2. Będąc w folderze naciśnij `F4`, aby otworzyć terminal.
-3. Wpisz w terminalu kolejno :
+3. Wpisz w terminalu kolejno:
 ```
     npm install -g create-react-app
     create-react-app reactTraining
@@ -17,8 +17,16 @@ co należy poprawić.
     npm i -S prop-types
     npm start
 ```
-4. W pliku index.js usuń wszystko i stwórz `MainComponent` i dodaj walidację propsa children, który jest stringiem.
+4. W pliku index.js usuń wszystko i stwórz `MainComponent`, dodaj w nim walidację propsa children
+ (sprawdzanie czy wartość przekazana do komponentu jest w odpowiednim typie), który jest stringiem.
 
+Dodaj na początku:
+```javascript
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
+```
+Następnie dodaj walidację:
 ```javascript
 // https://facebook.github.io/react/docs/typechecking-with-proptypes.html
 MainComponent.propTypes: {
@@ -27,27 +35,46 @@ MainComponent.propTypes: {
 
 ```
    Jako, że jego rolą będzie wyłącznie wyświetlanie tekstu zadanie wykonaj przy pomocy komponentu prezentacyjnego.
-
-5. Przypisz do zmiennej `MainScene` komponent, który jako props `children` przyjmuje tekst `Hello World!`.
-
-PropTypes children:
-```javascript
-<Component>tekst</Component> //Wszystko przekazane między tagami zostaje przypisane do children.
-````
+Po wszystkim użyj przygotowany komponent, aby wyświetlić napis 'Hello World!';
 Użycie komponentu:
 ```javascript
-    ReactDOM.render(<MainComponent />, document.getElementById('app'));
+    //Wszystko przekazane między tagami zostaje przypisane do children.
+    ReactDOM.render(<MainComponent>'Hello World!'<MainComponent> />, document.getElementById('app')); 
 ```
+
+5. Przypisz do zmiennej `Main1` komponent, użyty w ReactDom.render z poprzedniego zadania.`.
+   Stwórz nowy komponent, o nazwie Main2, a w metodzie render użyj komponentu ze zmiennej 'Main1'.
+
+Przypisanie komponentu do zmiennej:
+```javascript
+const Main1 =
+    <MainComponent>
+        <strong>I'm here! </strong>
+    </MainComponent>;
+```
+
 Renderowanie komponentu ze zmiennej:
 ```javascript
-    ReactDOM.render({MainScene}, document.getElementById('app'));
+   return(
+        <div>
+            {Main1}
+            <MainComponent>I'm under!</MainComponent>
+        </div> 
+    );
 ```
-## Zadanie 2 - Refaktor
+## Zadanie 2 - Refaktor komponentów na klasy
 1. Stwórz plik o nazwie `MainComponent` i wyciągnij cały kod komponentu do tego pliku.
-2. Zaimportuj komponent w pliku index.js.
+Na początku każdego następnego nowego pliku dodaj już tylko: 
+```javascript
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+```
 
+Na końcu pliku dodaj export, który umożliwi zaimportowanie tego komponentu w innych plikach:
 ```javascript
 export default MainComponent; // w pliku komponentu
+```
+2. Zaimportuj komponent w pliku index.js.
 
 // w pliku do którego importujemy nasz komponent
 import MainComponent from './scieżka_do_pliku/MainComponent'; 
