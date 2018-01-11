@@ -41,27 +41,6 @@ Użycie komponentu:
     //Wszystko przekazane między tagami zostaje przypisane do children.
     ReactDOM.render(<MainComponent>'Hello World!'<MainComponent> />, document.getElementById('app')); 
 ```
-
-5. Przypisz do zmiennej `Main1` komponent, użyty w ReactDom.render z poprzedniego zadania.`.
-   Stwórz nowy komponent, o nazwie Main2, a w metodzie render użyj komponentu ze zmiennej 'Main1'.
-
-Przypisanie komponentu do zmiennej:
-```javascript
-const Main1 =
-    <MainComponent>
-        <strong>I'm here! </strong>
-    </MainComponent>;
-```
-
-Renderowanie komponentu ze zmiennej:
-```javascript
-   return(
-        <div>
-            {Main1}
-            <MainComponent>I'm under!</MainComponent>
-        </div> 
-    );
-```
 ## Zadanie 2 - Refaktor komponentów na klasy
 1. Stwórz plik o nazwie `MainComponent` i wyciągnij cały kod komponentu do tego pliku.
 Na początku każdego następnego nowego pliku dodaj już tylko: 
@@ -76,6 +55,7 @@ export default MainComponent; // w pliku komponentu
 ```
 2. Zaimportuj komponent w pliku index.js.
 
+```javascript
 // w pliku do którego importujemy nasz komponent
 import MainComponent from './scieżka_do_pliku/MainComponent'; 
 
@@ -99,6 +79,27 @@ import { default as Main } from './scieżka_do_pliku/plik_exportujący';
 3. Użyj komponentu dwukrotnie z różnymi parametrami, np: przekaż tekst otoczony tagiem `<strong>`.
 Pamiętaj: Aby wyrenderować więcej niż jeden komponent, muszą one mieć rodzica.
 Jeden komponent wyrenderuj przy pomocy komponentu prezentacyjnego, a drugi przy pomocy zmiennej.
+
+Przypisz do zmiennej `Main1` komponent, użyty w ReactDom.render z poprzedniego zadania.`.
+   Stwórz nowy komponent, o nazwie Main2, a w metodzie render użyj komponentu ze zmiennej 'Main1'.
+
+Przypisanie komponentu do zmiennej:
+```javascript
+const Main1 =
+    <MainComponent>
+        <strong>I'm here! </strong>
+    </MainComponent>;
+```
+
+Renderowanie komponentu ze zmiennej:
+```javascript
+   return(
+        <div>
+            {Main1}
+            <MainComponent>I'm under!</MainComponent>
+        </div> 
+    );
+```
 
 Źle:
 ```javascript
