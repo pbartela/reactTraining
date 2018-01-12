@@ -2,7 +2,8 @@
 Celem ćwiczenia będzie wykonanie bardzo prostej listy postów.
 Zadanie to pozwoli zapoznać się z kluczowymi elementami React'a
 
-Przy każdym zadaniu spoglądaj na konsolę oraz Chrome Dev Tools (Domyślnie: F12). W przypadku jakichkolwiek błędów zostanie wyświetlony komunikat
+Przy każdym zadaniu spoglądaj na konsolę oraz Chrome Dev Tools
+(Domyślnie: F12). W przypadku jakichkolwiek błędów zostanie wyświetlony komunikat
 co należy poprawić.
 
 ## Zadanie 1 - Create react i pierwszy komponent
@@ -17,8 +18,10 @@ co należy poprawić.
     npm i -S prop-types
     npm start
 ```
-4. W pliku index.js usuń wszystko i stwórz `MainComponent`, dodaj w nim walidację propsa children
- (sprawdzanie czy wartość przekazana do komponentu jest w odpowiednim typie), który jest stringiem.
+4. W pliku index.js usuń wszystko i stwórz `MainComponent`,
+ dodaj w nim walidację propsa children
+ (sprawdzanie czy wartość przekazana do komponentu jest
+ w odpowiednim typie), który jest stringiem.
 
 Dodaj na początku:
 ```javascript
@@ -32,14 +35,16 @@ Następnie dodaj walidację:
 MainComponent.propTypes: {
   children: React.PropTypes.string.isRequired
 }
-
 ```
-   Jako, że jego rolą będzie wyłącznie wyświetlanie tekstu zadanie wykonaj przy pomocy komponentu prezentacyjnego.
-Po wszystkim użyj przygotowany komponent, aby wyświetlić napis 'Hello World!';
+   Jako, że jego rolą będzie wyłącznie wyświetlanie tekstu 
+   zadanie wykonaj przy pomocy komponentu prezentacyjnego.
+   Po wszystkim użyj przygotowany komponent, aby wyświetlić
+   napis 'Hello World!';
 Użycie komponentu:
 ```javascript
-    //Wszystko przekazane między tagami zostaje przypisane do children.
-    ReactDOM.render(<MainComponent>'Hello World!'<MainComponent> />, document.getElementById('app')); 
+    //Wszystko przekazane między tagami zostaje przypisane
+     do children.
+ReactDOM.render(<MainComponent>'Hello World!'<MainComponent> />, document.getElementById('app')); 
 ```
 ## Zadanie 2 - Refaktor komponentów na klasy
 1. Stwórz plik o nazwie `MainComponent` i wyciągnij cały kod komponentu do tego pliku.
@@ -207,7 +212,7 @@ constructor(props){
 }
 ```
 
-Definicja metody:
+Definicja metody, która przekazana do komponentu pobierze dane:
 ```javascript
 handleSubmit = (post) => {
     this.setState({
