@@ -12,7 +12,7 @@ class MainScene extends Component {
                 value: '',
                 username: '',
                 image:''
-            },
+            }
         }
     }
 

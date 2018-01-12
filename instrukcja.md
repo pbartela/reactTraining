@@ -101,6 +101,7 @@ Renderowanie komponentu ze zmiennej:
     );
 ```
 
+Przykłady metody render:
 Źle:
 ```javascript
 return (
@@ -129,18 +130,18 @@ return ReactDom.createPortal() ;
 //dla ciekawych: https://reactjs.org/blog/2017/09/26/react-v16.0.html#portals
 ```
 ## Zadanie 3 - Stylowanie komponentu
-1. Dodaj do `MainComponent` propsy, który pozwolą przypisać mu nową klasę, oraz osobny prop `style`, który będzie obiektem.
+1. Dodaj do `MainComponent` propsy (parametry), który pozwolą przypisać mu nową klasę (className), oraz osobny prop `style`, który będzie obiektem.
 2. Skorzystaj ze styli na 3 różne sposoby:
 
     a.Style zaimportowane w pliku index.html są dostępne globalnie i wystarczy użyć klasy na komponencie.
 
-    b.Każdy tagi w reakcie przyjmują jako prop obiekt `style`,
+    b.Każdy tag w reakcie przyjmuje je jako prop obiekt `style`,
     w którym można zdefiniować style, ale rządzi się on troszkę innymi zasadami. 
 
     c.Przy pomocy odpowiedniej konfiguracji Webpacka można style zaimportować prosto z pliku css.
     Create-react-app od razu dostarcza taką konfigurację. 
     `import './index.css`.
-    Tak zaimportowane style mogą być użyte w w komponencie jak i każdym miejscu gdzie komponent je dostarczający zostanie       użyty.
+    Tak zaimportowane style mogą być użyte w w komponencie jak i każdym miejscu gdzie komponent je dostarczający zostanie użyty.
     
 ! Przy importowaniu styli z cssów, React rozpoznaje duplikaty i dodaje je do wygenerowanego kodu tylko jeden raz.
 
@@ -153,23 +154,26 @@ var divStyle = {
   msTransition: 'all' // 'ms' is the only lowercase vendor prefix
 };
 
-ReactDOM.render(<div style={divStyle}>Hello World!</div>, mountNode);
+<div style={divStyle}>Hello World!</div>
 ```
 https://react-cn.github.io/react/tips/style-props-value-px.html
 
 3. W podobny sposób co style można zaimportować obrazki i użyć ich później w kodzie.
-   
-   Zaimportuj avatar
-   `import avatar from './img/avatar_2x.png';`,
+   Użyj google i pobierz jakiś avatar.
+   Zaimportuj avatar w kodzie.
+   `import avatar from './img/avatar.png';`,
    następnie użyj
    `<img alt='avatar' src={avatar} />`
    
 ## Zadanie 4 - TextArea
-1. Stwórz w osobnym pliku komponent, zawierąjący w sobie 2 inputy (username i image), textarea oraz button.
-Ostyluj go jeśli chcesz. Jako prop powinien przyjmować funkcję, przez którą będziemy zwracać z niego dane.
-2. `MainComponent` wyświetlaj dane otrzymane z `textArea`
-3. Użyj odpowiednich metod z cyklu życia komponentu do inicjalizacji i zmiany stanu:
-    https://reactjs.org/docs/react-component.html
+1. Stwórz w osobnym pliku komponent, zawierąjący w sobie dwa pola (htmlowy element input)
+   Pierwszy będzie służył do wpisania nazwy użytkownika (username),
+     a w drugim użytkownik poda adres do avatara, którego adres znajdzie w googlach.
+     Dodaj również element textarea.
+    Ostyluj go jeśli chcesz. Jako prop powinien przyjmować funkcję, przez którą będziemy zwracać z niego dane.
+    Zwrócone dane przypisz zapisz w stanie komponentu.
+
+Przykłady ustawiania stanu komponentu:
 ```javascript
 this.state = {
     text:''           // inicjalizacja stanu
@@ -182,10 +186,87 @@ this.setState({
    text
 })
 
-this.setState(prevState=> {      this.setState((state, props) => {})
+this.setState(prevState=> {
    text: prevState.text + 'new' 
 })       
+
+this.setState((state, props) => {})
 ```
+
+Zdefiniuj stan w konstruktorze:
+```javascript
+constructor(props){
+    super(props);
+    this.state ={
+        post: {
+            value: '',
+            username: '',
+            image:''
+        }
+    }
+}
+```
+
+Definicja metody:
+```javascript
+handleSubmit = (post) => {
+    this.setState({
+        post: post
+    })
+}
+```
+Metoda przekazana do komponentu:
+```javascript
+<textArea onHandleSubmit={this.handleSubmit}></textArea>
+
+```
+2. W `MainComponent` wyświetlaj dane otrzymane z `textArea`
+
+    Przykład metody render:
+```javascript
+render() {
+    const { post } = this.state; 
+    return (
+        <div>
+            <div>
+                <img alt={post.username} src={post.image} />
+                {post.value} {post.username}
+            </div>
+            <div>
+                <TextArea onHandleSubmit={this.handleSubmit} />
+            </div>
+        </div>
+    )
+}
+```
+Użyj odpowiednich metod z cyklu życia komponentu do inicjalizacji i zmiany stanu:
+    https://reactjs.org/docs/react-component.html
+```javascript
+    Mounting
+    These methods are called when an instance of a component is being created and inserted into the DOM:
+
+    constructor()
+    componentWillMount()
+    render()
+    componentDidMount()
+    Updating
+    An update can be caused by changes to props or state. These methods are called when a component is being re-rendered:
+
+    componentWillReceiveProps()
+    shouldComponentUpdate()
+    componentWillUpdate()
+    render()
+    componentDidUpdate()
+    Unmounting
+    This method is called when a component is being removed from the DOM:
+
+    componentWillUnmount()
+    Error Handling
+    This method is called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+
+    componentDidCatch()
+```
+
 ## Zadanie 5 - Post Component
 1. Stwórz w osobnym pliku komponent, który będzie odpowiedzialny za wyświetlanie danych z poprzedniego zadania.
 2. Zaimportuj go w `MainComponent` i przekaż do niego dane do wyświetlania.
