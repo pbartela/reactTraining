@@ -42,8 +42,7 @@ MainComponent.propTypes: {
    napis 'Hello World!';
 Użycie komponentu:
 ```javascript
-    //Wszystko przekazane między tagami zostaje przypisane
-     do children.
+    //Wszystko przekazane między tagami zostaje przypisane do children.
 ReactDOM.render(<MainComponent>'Hello World!'<MainComponent> />, document.getElementById('app')); 
 ```
 ## Zadanie 2 - Refaktor komponentów na klasy
@@ -267,20 +266,22 @@ Użyj odpowiednich metod z cyklu życia komponentu do inicjalizacji i zmiany sta
 
     componentWillUnmount()
     Error Handling
-    This method is called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+    This method is called when there is an error during rendering, in a lifecycle method,
+     or in the constructor of any child component.
 
     componentDidCatch()
 ```
 
 ## Zadanie 5 - Post Component
-1. Stwórz w osobnym pliku komponent, który będzie odpowiedzialny za wyświetlanie danych z poprzedniego zadania.
+1. Stwórz w osobnym pliku komponent, który będzie odpowiedzialny za wyświetlanie
+   danych z poprzedniego zadania.
 2. Zaimportuj go w `MainComponent` i przekaż do niego dane do wyświetlania.
 3. Dodaj metodę, która umożliwia zbieranie postów do tablicy
-    i użyj jej do wyegenerowania więcej niż jednego postu.
+   i użyj jej do wyegenerowania więcej niż jednego postu.
    Zwróć uwagę, że dane trzymane w state znikają po odświeżeniu strony.   
    Wykorzystaj localStorage do trzymania danych.
 ```javascript 
-    todos.map(todo => <div key={todo.id}>{todo.text}</div>) 
+    posts.map(post => <Post key={todo.id}>{todo.text}</Post>) 
     // mapowanie tablicy obiektów na element HTMLowy
     
     localStorage.setItem(key, JSON.stringify(data)); //zapisywanie danych do localstorage
@@ -309,6 +310,7 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 4. Jeden komponent musi mieć przekazany jakiś parametr, a drugi może zostać wygenerowany domyślnie.
 5. Skonfiguruj routing
 ```javascript
+const Routing = () =>
  <Router>
         <div>
             <ul>
@@ -320,6 +322,8 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
             />
         </div>
     </Router>;
+
+ReactDOM.render(<Routing />, document.getElementById('app')); 
 ```
 ## Bonus stage
 1. Zainstaluj json-server
@@ -348,4 +352,12 @@ export default {
     addPost,
     getPosts
 }
+```
+Aby dostać się do pobranych danych i zapisać je do stanu:
+```javascript
+const posts = await api.getPosts();
+const postsJson = await posts.json();
+postsJson && this.setState({
+    posts: postsJson
+});
 ```
