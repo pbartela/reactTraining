@@ -89,6 +89,9 @@ Przypisz do zmiennej `Main1` komponent, użyty w ReactDom.render z poprzedniego 
 
 Na drugiej stronie znajduje się przykład ------------------>
 
+
+
+
 Przypisanie komponentu do zmiennej:
 ```javascript
 const Main1 =
