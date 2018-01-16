@@ -87,6 +87,8 @@ Jeden komponent wyrenderuj przy pomocy komponentu prezentacyjnego, a drugi przy 
 Przypisz do zmiennej `Main1` komponent, użyty w ReactDom.render z poprzedniego zadania.`.
    Stwórz nowy komponent, o nazwie Main2, a w metodzie render użyj komponentu ze zmiennej 'Main1'.
 
+Na drugiej stronie znajduje się przykład ------------------>
+
 Przypisanie komponentu do zmiennej:
 ```javascript
 const Main1 =
