@@ -53,10 +53,10 @@ class MainScene extends Component {
         return (
             <div className='container-fluid'>
                 <h1>{title}</h1>
-                <div className='row'>
+                <div>
                     <Posts posts={filteredPosts} />
                 </div>
-                <div className='row'>
+                <div>
                     <TextArea onHandleSubmit={this.handleSubmit} />
                     <div>
                         <label>

@@ -24,19 +24,19 @@ class Post extends Component {
         const userImage = isEmpty(image) ? userImageFallback :validUrl.isWebUri(image) ? image : userImageFallback;
         const panelBodyClassNames = classNames('panel-body', { 'hidden': !visible });
         return (
-            <div className='row' onClick={this.handleVisibilityClick}>
-                <div className='col-sm-1'>
-                    <div className='thumbnail'>
+            <div onClick={this.handleVisibilityClick}>
+                <div>
+                    <div>
                         <img
                             alt={username}
-                            className='img-responsive user-photo'
+                            
                             src={userImage}
                         />
                     </div>
                 </div>
-                <div className='post-column'>
-                    <div className='panel panel-default'>
-                        <div className='panel-heading'>
+                <div>
+                    <div>
+                        <div>
                             <strong>{username}</strong>
                         </div>
                         <div className={panelBodyClassNames}>
@@ -50,7 +50,7 @@ class Post extends Component {
 };
 
 Post.propTypes = {
-    children: PropTypes.string,      
+    children: PropTypes.string,
     image: PropTypes.string,
     username: PropTypes.string
 };

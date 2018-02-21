@@ -26,11 +26,11 @@ class MainScene extends Component {
         const { post: { image, username, value } } = this.state;
         return (
             <div className='container-fluid'>
-                <div className='row'>
+                <div>
                     <img alt={username} src={image} />
                     {value} {username}
                 </div>
-                <div className='row'>
+                <div>
                     <TextArea onHandleSubmit={this.handleSubmit} />
                 </div>
             </div>

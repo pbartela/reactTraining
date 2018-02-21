@@ -38,19 +38,19 @@ class MainScene extends Component {
         const { posts } = this.state;
         const renderPosts = posts.map((post, index) =>
             <Post
-                key={index}    
-                image={post.image}
+                image={post.image}    
+                key={index}
                 username={post.username}
             >
-            {post.value}    
+                {post.value}    
             </Post>
         );
         return (
             <div className='container-fluid'>
-                <div className='row'>
+                <div>
                     {renderPosts}
                 </div>
-                <div className='row'>
+                <div>
                     <TextArea onHandleSubmit={this.handleSubmit} />
                 </div>
             </div>

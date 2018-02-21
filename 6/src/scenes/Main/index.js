@@ -39,10 +39,10 @@ class MainScene extends Component {
         const { posts } = this.state;
         return (
             <div className='container-fluid'>
-                <div className='row'>
+                <div>
                     <Posts posts={posts} />
                 </div>
-                <div className='row'>
+                <div>
                     <TextArea onHandleSubmit={this.handleSubmit} />
                 </div>
             </div>

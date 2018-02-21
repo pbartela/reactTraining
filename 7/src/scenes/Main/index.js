@@ -50,10 +50,10 @@ class MainScene extends Component {
         const filteredPosts = posts.filter(post => filterValue === '' || post.username.toLowerCase().indexOf(filterValue.toLowerCase()) > -1);
         return (
             <div className='container-fluid'>
-                <div className='row'>
+                <div>
                     <Posts posts={filteredPosts} />
                 </div>
-                <div className='row'>
+                <div>
                     <TextArea onHandleSubmit={this.handleSubmit} />
                     <div>
                         <label>

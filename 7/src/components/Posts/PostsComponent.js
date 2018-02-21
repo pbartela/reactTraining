@@ -13,9 +13,9 @@ const Posts = props => {
         </Post>
     }, this);
     return (
-        <div className='container'>
-            <div className='row'>
-                <div className='col-sm-12'>
+        <div>
+            <div>
+                <div>
                     <h3>Comments</h3>
                 </div>
             </div>

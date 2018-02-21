@@ -43,50 +43,41 @@ class TextArea extends Component {
 
     render() {
         return (
-            <div className='container'>
-                <div className='row'>
+            <div>
+                <div>
                     <h3>Post a comment</h3>
                 </div>
     
-                <div className='row'>    
-                    <div className='col-md-6'>
-                        <div className='widget-area no-padding blank'>
-                            <div className='status-upload'>
-                                <form onSubmit={this.handleOnSubmitPost}>
-                                    <textarea
-                                        onChange={this.handleChange}
-                                        placeholder='What is or your mind?'
-                                        value={this.state.value}
-                                    />
-                                    <div>
-                                        <label className='name-input-label'>Name: </label>
-                                        <input
-                                            className='user-input'    
-                                            onChange={this.handleOnChangeUsername}
-                                            type='text'
-                                            value={this.state.username}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className='image-input-label'>Profile image: </label>
-                                        <input
-                                            onChange={this.handleOnChangeImage}
-                                            type='text'
-                                            value={this.state.image}
-                                        /> 
-                                    </div>
-                                    <button
-                                        className='btn btn-success green'
-                                        type='submit'
-                                    >
-                                        <i className='fa fa-share' />
-                                        Share
-                                    </button>
-                                </form>
-                            </div>
+                <div>
+                    <form onSubmit={this.handleOnSubmitPost}>
+                        <textarea
+                            onChange={this.handleChange}
+                            placeholder='What is or your mind?'
+                            value={this.state.value}
+                        />
+                        <div>
+                            <label>Name: </label>
+                            <input    
+                                onChange={this.handleOnChangeUsername}
+                                type='text'
+                                value={this.state.username}
+                            />
                         </div>
-                    </div>
-        
+                        <div>
+                            <label>Profile image: </label>
+                            <input
+                                onChange={this.handleOnChangeImage}
+                                type='text'
+                                value={this.state.image}
+                            /> 
+                        </div>
+                        <button
+                            type='submit'
+                        >
+                            <i className='fa fa-share' />
+                                        Share
+                        </button>
+                    </form>
                 </div>
             </div>
         );

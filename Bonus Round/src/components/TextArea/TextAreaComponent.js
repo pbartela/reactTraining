@@ -43,15 +43,15 @@ class TextArea extends Component {
 
     render() {
         return (
-            <div className='container'>
-                <div className='row'>
+            <div>
+                <div>
                     <h3>Post a comment</h3>
                 </div>
     
-                <div className='row'>    
+                <div>    
                     <div className='col-md-6'>
                         <div className='widget-area no-padding blank'>
-                            <div className='status-upload'>
+                            <div>
                                 <form onSubmit={this.handleOnSubmitPost}>
                                     <textarea
                                         onChange={this.handleChange}
@@ -59,16 +59,16 @@ class TextArea extends Component {
                                         value={this.state.value}
                                     />
                                     <div>
-                                        <label className='name-input-label'>Name: </label>
+                                        <label>Name: </label>
                                         <input
-                                            className='user-input'    
+                                                
                                             onChange={this.handleOnChangeUsername}
                                             type='text'
                                             value={this.state.username}
                                         />
                                     </div>
                                     <div>
-                                        <label className='image-input-label'>Profile image: </label>
+                                        <label>Profile image: </label>
                                         <input
                                             onChange={this.handleOnChangeImage}
                                             type='text'
@@ -76,7 +76,7 @@ class TextArea extends Component {
                                         /> 
                                     </div>
                                     <button
-                                        className='btn btn-success green'
+                                        
                                         type='submit'
                                     >
                                         <i className='fa fa-share' />
