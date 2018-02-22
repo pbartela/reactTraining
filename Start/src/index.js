@@ -1,12 +1,17 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
-const MainScene = () => {
+const MainScene = (props) => {
     return (
         <div>
-            Hello world!
+            {props.children}
         </div>
     )
 }
 
-ReactDOM.render(<MainScene />, document.getElementById('app'));
+MainScene.propTypes = {
+    children: PropTypes.string.isRequired
+}
+
+ReactDOM.render(<MainScene>Hello World!</MainScene>, document.getElementById('app'));

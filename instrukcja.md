@@ -13,15 +13,17 @@ co należy poprawić.
 3. Wpisz w terminalu kolejno:
 ```
     npm install -g create-react-app
-    create-react-app reactTraining
-    cd reactTraining/
+    create-react-app react-training
+    cd react-training/
     npm i -S prop-types
     npm start
 ```
-4. W pliku index.js usuń wszystko i stwórz `MainComponent`,
+4. W katalogu znajduje się plik index.js usuń wszystko w środku i stwórz `MainComponent`,
  dodaj w nim walidację propsa children
  (sprawdzanie czy wartość przekazana do komponentu jest
  w odpowiednim typie), który jest stringiem.
+
+ Przykłady znajdziesz poniżej:
 
 Dodaj na początku:
 ```javascript
@@ -29,15 +31,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 ```
+
+Stwórz komponent:
+```javascript
+const MainScene = (props) => {
+    return (
+        <div>
+           {props.children}
+        </div>
+    )
+}
+```
+
 Następnie dodaj walidację:
 ```javascript
 // https://facebook.github.io/react/docs/typechecking-with-proptypes.html
-MainComponent.propTypes: {
-  children: React.PropTypes.string.isRequired
+MainComponent.propTypes = {
+  children: PropTypes.string.isRequired
 }
 ```
    Jako, że jego rolą będzie wyłącznie wyświetlanie tekstu 
-   zadanie wykonaj przy pomocy komponentu prezentacyjnego.
+   zadanie wykonamy przy pomocy komponentu prezentacyjnego.
    Po wszystkim użyj przygotowany komponent, aby wyświetlić
    napis 'Hello World!';
 Użycie komponentu:
@@ -46,8 +60,9 @@ Użycie komponentu:
 ReactDOM.render(<MainComponent>'Hello World!'<MainComponent> />, document.getElementById('app')); 
 ```
 ## Zadanie 2 - Refaktor komponentów na klasy
-1. Stwórz plik o nazwie `MainComponent` i wyciągnij cały kod komponentu do tego pliku.
-Na początku każdego następnego nowego pliku dodaj już tylko: 
+1. Stwórz nowy plik o nazwie `MainComponent` i wyciągnij
+ cały uprzednio napisany kod komponentu do tego pliku.
+ Na początku każdego następnego nowego pliku dodawaj już tylko: 
 ```javascript
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
