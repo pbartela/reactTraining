@@ -18,7 +18,7 @@ co należy poprawić.
     npm i -S prop-types
     npm start
 ```
-4. W katalogu znajduje się plik index.js usuń wszystko w środku i stwórz `MainComponent`,
+4. W katalogu znajduje się plik index.js usuń wszystko w środku i stwórz komponent `MainScene`,
  dodaj w nim walidację propsa children
  (sprawdzanie czy wartość przekazana do komponentu jest
  w odpowiednim typie), który jest stringiem.
@@ -46,7 +46,7 @@ const MainScene = (props) => {
 Następnie dodaj walidację:
 ```javascript
 // https://facebook.github.io/react/docs/typechecking-with-proptypes.html
-MainComponent.propTypes = {
+MainScene.propTypes = {
   children: PropTypes.string.isRequired
 }
 ```
@@ -57,10 +57,10 @@ MainComponent.propTypes = {
 Użycie komponentu:
 ```javascript
     //Wszystko przekazane między tagami zostaje przypisane do children.
-ReactDOM.render(<MainComponent>'Hello World!'<MainComponent> />, document.getElementById('app')); 
+ReactDOM.render(<MainScene>'Hello World!'</MainScene>, document.getElementById('app')); 
 ```
 ## Zadanie 2 - Refaktor komponentów na klasy
-1. Stwórz nowy plik o nazwie `MainComponent` i wyciągnij
+1. Stwórz nowy plik o nazwie `MainScene.js` i wyciągnij
  cały uprzednio napisany kod komponentu do tego pliku.
  Na początku każdego następnego nowego pliku dodawaj już tylko: 
 ```javascript
@@ -70,25 +70,25 @@ import PropTypes from 'prop-types';
 
 Na końcu pliku dodaj export, który umożliwi zaimportowanie tego komponentu w innych plikach:
 ```javascript
-export default MainComponent; // w pliku komponentu
+export default MainScene; // w pliku komponentu
 ```
 2. Zaimportuj komponent w pliku index.js.
 
 ```javascript
 // w pliku do którego importujemy nasz komponent
-import MainComponent from './scieżka_do_pliku/MainComponent'; 
+import MainScene from './scieżka_do_pliku/MainScene'; 
 
-export { MainComponent, OtherComponent }; // Exportowanie dwóch obiektów z jednego pliku
-import { MainComponent, OtherComponent } from './scieżka_do_pliku/plik_exportujący';
+export { MainScene, OtherComponent }; // Exportowanie dwóch obiektów z jednego pliku
+import { MainScene, OtherComponent } from './scieżka_do_pliku/plik_exportujący';
 
 Metody można łączyć:
 
-export default MainComponent;
+export default MainScene;
 export { OtherComponent }; 
 
-import MainComponent, { OtherComponent } from './scieżka_do_pliku/plik_exportujący';
+import MainScene, { OtherComponent } from './scieżka_do_pliku/plik_exportujący';
 ```
-Przypisanie importu do innej zmiennej:
+Przypisanie importu do innej zmiennej (jeżeli chcesz zmienić nazwę importowanego pliku):
 ```javascript
 import { OtherComponent as Other } from './scieżka_do_pliku/plik_exportujący'; 
 import { default as Main } from './scieżka_do_pliku/plik_exportujący'; 
@@ -102,27 +102,27 @@ Jeden komponent wyrenderuj przy pomocy komponentu prezentacyjnego, a drugi przy 
 Przypisz do zmiennej `Main1` komponent, użyty w ReactDom.render z poprzedniego zadania.`.
    Stwórz nowy komponent, o nazwie Main2, a w metodzie render użyj komponentu ze zmiennej 'Main1'.
 
-Na drugiej stronie znajduje się przykład ------------------>
-
-
-
-
 Przypisanie komponentu do zmiennej:
 ```javascript
-const Main1 =
-    <MainComponent>
-        <strong>I'm here! </strong>
-    </MainComponent>;
-```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import MainScene from  './scenes/main';
 
-Renderowanie komponentu ze zmiennej:
-```javascript
-   return(
+const Main1 =
+    <MainScene>
+        I'm here!
+    </MainScene>;
+const Main2 = () => {
+    return(
         <div>
             {Main1}
-            <MainComponent>I'm under!</MainComponent>
+            <MainScene>I'm under!</MainScene>
         </div> 
     );
+};
+
+ReactDOM.render(<Main2 />, document.getElementById('app'));
+
 ```
 
 Przykłady metody render:
@@ -133,7 +133,7 @@ return (
      <div />
 )
 ```
-Dobrze:
+Dobrze: 
 ```javascript
 return (
     <div> 
@@ -154,7 +154,7 @@ return ReactDom.createPortal() ;
 //dla ciekawych: https://reactjs.org/blog/2017/09/26/react-v16.0.html#portals
 ```
 ## Zadanie 3 - Stylowanie komponentu
-1. Dodaj do `MainComponent` propsy (parametry), który pozwolą przypisać mu nową klasę (className), oraz osobny prop `style`, który będzie obiektem.
+1. Dodaj do `MainScene` propsy (parametry), który pozwolą przypisać mu nową klasę (className), oraz osobny prop `style`, który będzie obiektem.
 2. Skorzystaj ze styli na 3 różne sposoby:
 
     a.Style zaimportowane w pliku index.html są dostępne globalnie i wystarczy użyć klasy na komponencie.
@@ -172,10 +172,7 @@ return ReactDom.createPortal() ;
 ```
 /// https://react-cn.github.io/react/tips/inline-styles.html
 var divStyle = {
-  color: 'white',
-  backgroundImage: 'url(' + imgUrl + ')',
-  WebkitTransition: 'all', // note the capital 'W' here
-  msTransition: 'all' // 'ms' is the only lowercase vendor prefix
+  color: 'white'
 };
 
 <div style={divStyle}>Hello World!</div>
@@ -193,9 +190,67 @@ https://react-cn.github.io/react/tips/style-props-value-px.html
 1. Stwórz w osobnym pliku komponent, zawierąjący w sobie dwa pola (htmlowy element input)
    Pierwszy będzie służył do wpisania nazwy użytkownika (username),
      a w drugim użytkownik poda adres do avatara, którego adres znajdzie w googlach.
-     Dodaj również element textarea.
+     Dodaj również element textarea, oraz przycisk, którym zatwierdzimy wpisaną wiadomość.
     Ostyluj go jeśli chcesz. Jako prop powinien przyjmować funkcję, przez którą będziemy zwracać z niego dane.
-    Zwrócone dane przypisz zapisz w stanie komponentu.
+    Zwrócone dane zapisz w obiekcie stanu komponentu.
+
+Zdefiniuj stan początkowy w konstruktorze:
+```javascript
+constructor(props){
+    super(props);
+    this.state ={
+        post: {
+            value: '',
+            username: '',
+            image:''
+        }
+    }
+}
+```
+
+Stwórz trzy metody (dla każdego pola z osobna),
+ które pobiorą dane ze stworzonych przez Ciebie pól i zapiszą w stanie komponentu
+```javascript
+handleOnChangeMessageText(event) {
+    this.setState({value: event.target.value});
+}
+```
+
+W pliku `MainScene.js` stwórz definicję metody, która przekazana do komponentu pobierze dane:
+```javascript
+handleSubmit = (post) => {
+    this.setState({
+        post: post
+    })
+}
+```
+Metoda przekazana do komponentu:
+```javascript
+<TextArea onHandleSubmit={this.handleSubmit}></TextArea>
+
+```
+Wróć do pliku `TextArea.js` i obsłuż przekazną funkcję:
+```javascript
+handleOnSubmitPost(event) {
+        event.preventDefault();
+        const { onHandleSubmit } = this.props;
+        const {  image, username, value } = this.state;
+        onHandleSubmit({
+            username: username || 'Anonymous',
+            image: image,
+            value: value
+        });
+        this.setState({
+            value: '' // czyścimy text posta po wysłaniu
+        });    
+}
+```
+Sprawdź czy przekazany props jest funkcją:
+```javascript
+    TextArea.propTypes = {
+        onHandleSubmit: PropTypes.func.isRequired
+    };
+```
 
 Przykłady ustawiania stanu komponentu:
 ```javascript
@@ -217,35 +272,8 @@ this.setState(prevState=> {
 this.setState((state, props) => {})
 ```
 
-Zdefiniuj stan w konstruktorze:
-```javascript
-constructor(props){
-    super(props);
-    this.state ={
-        post: {
-            value: '',
-            username: '',
-            image:''
-        }
-    }
-}
-```
-
-Definicja metody, która przekazana do komponentu pobierze dane:
-```javascript
-handleSubmit = (post) => {
-    this.setState({
-        post: post
-    })
-}
-```
-Metoda przekazana do komponentu:
-```javascript
-<textArea onHandleSubmit={this.handleSubmit}></textArea>
-
-```
-2. W `MainComponent` wyświetlaj dane otrzymane z `textArea`
-
+2. W `MainScene` wyświetlaj dane otrzymane z `TextArea`
+przy pomocy zdefiniowanej już metody `handleSubmit`
     Przykład metody render:
 ```javascript
 render() {
@@ -263,7 +291,7 @@ render() {
     )
 }
 ```
-Użyj odpowiednich metod z cyklu życia komponentu do inicjalizacji i zmiany stanu:
+Metody z cyklu życia komponentu do inicjalizacji i zmiany stanu:
     https://reactjs.org/docs/react-component.html
 ```javascript
     Mounting
@@ -295,10 +323,10 @@ Użyj odpowiednich metod z cyklu życia komponentu do inicjalizacji i zmiany sta
 ## Zadanie 5 - Post Component
 1. Stwórz w osobnym pliku komponent, który będzie odpowiedzialny za wyświetlanie
    danych z poprzedniego zadania.
-2. Zaimportuj go w `MainComponent` i przekaż do niego dane do wyświetlania.
+2. Zaimportuj go w `MainScene` i przekaż do niego dane do wyświetlania.
 3. Dodaj metodę, która umożliwia zbieranie postów do tablicy
    i użyj jej do wyegenerowania więcej niż jednego postu.
-   Zwróć uwagę, że dane trzymane w state znikają po odświeżeniu strony.   
+   Zwróć uwagę, że dane trzymane w state znikają po odświeżeniu strony.
    Wykorzystaj localStorage do trzymania danych.
 ```javascript 
     posts.map(post => <Post key={todo.id}>{todo.text}</Post>) 
@@ -308,8 +336,18 @@ Użyj odpowiednich metod z cyklu życia komponentu do inicjalizacji i zmiany sta
     JSON.parse(localStorage.getItem(key));    //odczytywanie danych 
 ```
 ## Zadanie 6 - Posts Component
-1. Opakuj mapowanie `Post` w większy komponent, który jako Prop będzie otrzymywać tablicę postów.
-2. Zweryfikuj czy tablica przekazywana do komponentu zawiera wszystkie potrzebne pola.
+1. Opakuj mapowanie `Post` w większy komponent `Posts`, który jako Prop będzie otrzymywać tablicę postów.
+2. Zweryfikuj czy tablica postów przekazywana do komponentu zawiera wszystkie potrzebne pola.
+
+```javascript
+    Posts.propTypes = {
+        posts: PropTypes.arrayOf(PropTypes.shape({
+            username: PropTypes.string,
+            image: PropTypes.string,
+            value: PropTypes.string
+        }))
+    };
+```
 ## Zadanie 7 - Filtrowanie 
 1. Wykorzystując zdobyte doświadczenie stwórz komponent,
    który będzie zwracał text, po którym będziesz flitrować posty po polu `username`.
@@ -348,8 +386,11 @@ ReactDOM.render(<Routing />, document.getElementById('app'));
 ## Bonus stage
 1. Zainstaluj json-server
     `npm i -g json-server`
-2. Stwórz plik bazy danych dla postów
+2. Stwórz plik bazy danych dla postów w katologu `database`.
 3. Stwórz piki zawierające metody api, zaimportuj je i użyj zamiast zapisywania do localStorage.
+
+Uruchom serwer w osobnym terminalu: `json-server --watch database/db.json --port 3001`
+
 ```javascript
 const apiEndpoiint = 'http://localhost:3001/posts';
 

@@ -5,7 +5,7 @@ import './index.css';
 
 const Main1 =
     <MainScene className='container-fluid'>
-        <strong>I'm here! </strong>
+        I'm here!
     </MainScene>;
 const Main2 = () => {
     return(

@@ -4,7 +4,7 @@ import MainScene from  './scenes/main';
 import avatar from './img/avatar_2x.png';
 const Main1 =
     <MainScene className='container-fluid'>
-        <strong>I'm here! </strong>
+        I'm here!
     </MainScene>;
 const Main2 = () => {
     return(
