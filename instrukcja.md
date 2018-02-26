@@ -104,22 +104,19 @@ Przypisz do zmiennej `Main1` komponent, użyty w ReactDom.render z poprzedniego 
 
 Przypisanie komponentu do zmiennej:
 ```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import MainScene from  './scenes/main';
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import MainScene from  './scenes/main';
 
-const Main1 =
-    <MainScene>
-        I'm here!
-    </MainScene>;
-const Main2 = () => {
-    return(
-        <div>
-            {Main1}
-            <MainScene>I'm under!</MainScene>
-        </div> 
-    );
-};
+    const Main1 = <MainScene>I'm here!</MainScene>;
+    const Main2 = () => {
+        return(
+            <div>
+                {Main1}
+                <MainScene>I'm under!</MainScene>
+            </div> 
+        );
+    };
 
 ReactDOM.render(<Main2 />, document.getElementById('app'));
 
