@@ -95,7 +95,7 @@ import { default as Main } from './scieżka_do_pliku/plik_exportujący';
 
 <Main />
 ```
-3. Użyj komponentu dwukrotnie z różnymi parametrami, np: przekaż tekst otoczony tagiem `<strong>`.
+3. Użyj komponentu dwukrotnie z różnymi parametrami, np: przekaż dwa różne napisy.
 Pamiętaj: Aby wyrenderować więcej niż jeden komponent, muszą one mieć rodzica.
 Jeden komponent wyrenderuj przy pomocy komponentu prezentacyjnego, a drugi przy pomocy zmiennej.
 
