@@ -4,6 +4,7 @@ env:
   browser: true
 plugins:
   - "react"
+  - "markdown"
 rules:
   indent:
     - 2

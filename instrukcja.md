@@ -1,4 +1,5 @@
 # Szkolenie podstawowe React.js
+
 Celem ćwiczenia będzie wykonanie bardzo prostej listy postów.
 Zadanie to pozwoli zapoznać się z kluczowymi elementami React'a
 
@@ -10,14 +11,16 @@ co należy poprawić.
 
 1. Stwórz folder na dysku
 2. Będąc w folderze naciśnij `F4`, aby otworzyć terminal.
-3. Wpisz w terminalu kolejno:
-```
+3. Wpisz w terminalu kolejno
+
+```javascript
     npm install -g create-react-app
-    create-react-app react-training
-    cd react-training/
+    create-react-app reactTraining
+    cd reactTraining/
     npm i -S prop-types
     npm start
 ```
+
 4. W katalogu znajduje się plik index.js usuń wszystko w środku i stwórz komponent `MainScene`,
  dodaj w nim walidację propsa children
  (sprawdzanie czy wartość przekazana do komponentu jest
@@ -44,17 +47,20 @@ const MainScene = (props) => {
 ```
 
 Następnie dodaj walidację:
+
 ```javascript
 // https://facebook.github.io/react/docs/typechecking-with-proptypes.html
 MainScene.propTypes = {
   children: PropTypes.string.isRequired
 }
 ```
+
    Jako, że jego rolą będzie wyłącznie wyświetlanie tekstu 
    zadanie wykonamy przy pomocy komponentu prezentacyjnego.
    Po wszystkim użyj przygotowany komponent, aby wyświetlić
    napis 'Hello World!';
 Użycie komponentu:
+
 ```javascript
     //Wszystko przekazane między tagami zostaje przypisane do children.
 ReactDOM.render(<MainScene>'Hello World!'</MainScene>, document.getElementById('app')); 
@@ -96,31 +102,17 @@ import { default as Main } from './scieżka_do_pliku/plik_exportujący';
 <Main />
 ```
 3. Użyj komponentu dwukrotnie z różnymi parametrami, np: przekaż dwa różne napisy.
-Pamiętaj: Aby wyrenderować więcej niż jeden komponent, muszą one mieć rodzica.
+Pamiętaj: Aby wyrenderować więcej niż jeden komponent, muszą one mieć rodzica, być w tablicy (o tym później) lub owinięte "Fragmentem"
+
+https://reactjs.org/docs/fragments.html
+
 Jeden komponent wyrenderuj przy pomocy komponentu prezentacyjnego, a drugi przy pomocy zmiennej.
 
 Przypisz do zmiennej `Main1` komponent, użyty w ReactDom.render z poprzedniego zadania.`.
    Stwórz nowy komponent, o nazwie Main2, a w metodzie render użyj komponentu ze zmiennej 'Main1'.
+Dodaj też trzecie użycie komponentu nie przekazując nic między tagami.
 
-Przypisanie komponentu do zmiennej:
-```javascript
-    import React from 'react';
-    import ReactDOM from 'react-dom';
-    import MainScene from  './scenes/main';
 
-    const Main1 = <MainScene>I'm here!</MainScene>;
-    const Main2 = () => {
-        return(
-            <div>
-                {Main1}
-                <MainScene>I'm under!</MainScene>
-            </div> 
-        );
-    };
-
-ReactDOM.render(<Main2 />, document.getElementById('app'));
-
-```
 
 Przykłady metody render:
 Źle:
@@ -149,28 +141,66 @@ return 'Hello world!';
 
 return ReactDom.createPortal() ;
 //dla ciekawych: https://reactjs.org/blog/2017/09/26/react-v16.0.html#portals
+
+Przypisanie komponentu do zmiennej:
+```javascript
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import MainScene from  './scenes/main';
+
+    const Main1 = <MainScene>I'm here!</MainScene>;
+    const Main2 = () => {
+        return(
+            <div>
+                {Main1}
+                <MainScene>I'm under!</MainScene>
+                <MainScene></MainScene>
+            </div> 
+        );
+    };
+
+ReactDOM.render(<Main2 />, document.getElementById('app'));
+
+```
+
+**Zwróć uwagę** - w konsoli przeglądarki wystąpił błąd związany z walidacją
+
+*Przyklad zegarka i odświeżania*: https://codepen.io/pen?&editable=true&editors=0010
+
 ```
 ## Zadanie 3 - Stylowanie komponentu
+
+*Przed* - Dodaj 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+na końcu sekcji <head> w index html
+
 1. Dodaj do `MainScene` propsy (parametry), który pozwolą przypisać mu nową klasę (className), oraz osobny prop `style`, który będzie obiektem.
 2. Skorzystaj ze styli na 3 różne sposoby:
 
     a.Style zaimportowane w pliku index.html są dostępne globalnie i wystarczy użyć klasy na komponencie.
 
     b.Każdy tag w reakcie przyjmuje je jako prop obiekt `style`,
-    w którym można zdefiniować style, ale rządzi się on troszkę innymi zasadami. 
+    w którym można zdefiniować style, ale rządzi się on troszkę innymi zasadami.
 
     c.Przy pomocy odpowiedniej konfiguracji Webpacka można style zaimportować prosto z pliku css.
     Create-react-app od razu dostarcza taką konfigurację. 
     `import './index.css`.
     Tak zaimportowane style mogą być użyte w w komponencie jak i każdym miejscu gdzie komponent je dostarczający zostanie użyty.
+    d. Css modules - cssy importujemy jak obiekt 
+
+        import styles from './Main.module.css';
+    następnie używamy klas jako właściwości tego obiektu:
+    className={styles.newClass}
     
 ! Przy importowaniu styli z cssów, React rozpoznaje duplikaty i dodaje je do wygenerowanego kodu tylko jeden raz.
 
 ```
 /// https://react-cn.github.io/react/tips/inline-styles.html
-var divStyle = {
-  color: 'white'
-};
+var divStyle = { 
+     fontSize: 40,
+     color: 'white'
+    };
 
 <div style={divStyle}>Hello World!</div>
 ```
