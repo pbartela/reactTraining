@@ -1,0 +1,27 @@
+{
+  "name": "reacttraining",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint instrukcja.md; eslint */**/*.jsx",
+    "lint:md": "eslint --ext md .",
+    "lint:jsx": "eslint */**/*.jsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pbartela/reactTraining.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pbartela/reactTraining/issues"
+  },
+  "homepage": "https://github.com/pbartela/reactTraining#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-plugin-markdown": "^1.0.0",
+    "eslint-plugin-react": "^7.13.0"
+  }
+}

@@ -65,19 +65,24 @@ Użycie komponentu:
     //Wszystko przekazane między tagami zostaje przypisane do children.
 ReactDOM.render(<MainScene>'Hello World!'</MainScene>, document.getElementById('app')); 
 ```
+
 ## Zadanie 2 - Refaktor komponentów na klasy
+
 1. Stwórz nowy plik o nazwie `MainScene.js` i wyciągnij
  cały uprzednio napisany kod komponentu do tego pliku.
  Na początku każdego następnego nowego pliku dodawaj już tylko: 
+
 ```javascript
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 ```
 
 Na końcu pliku dodaj export, który umożliwi zaimportowanie tego komponentu w innych plikach:
+
 ```javascript
 export default MainScene; // w pliku komponentu
 ```
+
 2. Zaimportuj komponent w pliku index.js.
 
 ```javascript
@@ -93,15 +98,20 @@ export default MainScene;
 export { OtherComponent }; 
 
 import MainScene, { OtherComponent } from './scieżka_do_pliku/plik_exportujący';
+
 ```
+
 Przypisanie importu do innej zmiennej (jeżeli chcesz zmienić nazwę importowanego pliku):
+
 ```javascript
 import { OtherComponent as Other } from './scieżka_do_pliku/plik_exportujący'; 
 import { default as Main } from './scieżka_do_pliku/plik_exportujący'; 
 
 <Main />
 ```
+
 3. Użyj komponentu dwukrotnie z różnymi parametrami, np: przekaż dwa różne napisy.
+
 Pamiętaj: Aby wyrenderować więcej niż jeden komponent, muszą one mieć rodzica, być w tablicy (o tym później) lub owinięte "Fragmentem"
 
 https://reactjs.org/docs/fragments.html
@@ -112,17 +122,18 @@ Przypisz do zmiennej `Main1` komponent, użyty w ReactDom.render z poprzedniego 
    Stwórz nowy komponent, o nazwie Main2, a w metodzie render użyj komponentu ze zmiennej 'Main1'.
 Dodaj też trzecie użycie komponentu nie przekazując nic między tagami.
 
-
-
 Przykłady metody render:
 Źle:
+
 ```javascript
 return (
      <div />
      <div />
 )
 ```
+
 Dobrze: 
+
 ```javascript
 return (
     <div> 
@@ -141,8 +152,10 @@ return 'Hello world!';
 
 return ReactDom.createPortal() ;
 //dla ciekawych: https://reactjs.org/blog/2017/09/26/react-v16.0.html#portals
+```
 
 Przypisanie komponentu do zmiennej:
+
 ```javascript
     import React from 'react';
     import ReactDOM from 'react-dom';
@@ -167,7 +180,6 @@ ReactDOM.render(<Main2 />, document.getElementById('app'));
 
 *Przyklad zegarka i odświeżania*: https://codepen.io/pen?&editable=true&editors=0010
 
-```
 ## Zadanie 3 - Stylowanie komponentu
 
 *Przed* - Dodaj 
@@ -189,9 +201,10 @@ na końcu sekcji <head> w index html
     Tak zaimportowane style mogą być użyte w w komponencie jak i każdym miejscu gdzie komponent je dostarczający zostanie użyty.
     d. Css modules - cssy importujemy jak obiekt 
 
-        import styles from './Main.module.css';
+    import styles from './Main.module.css';
     następnie używamy klas jako właściwości tego obiektu:
     className={styles.newClass}
+    (zapewnia unikatowość styli nawet z ta sama nazwa)
     
 ! Przy importowaniu styli z cssów, React rozpoznaje duplikaty i dodaje je do wygenerowanego kodu tylko jeden raz.
 
