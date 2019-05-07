@@ -347,30 +347,39 @@ Metody z cyklu życia komponentu do inicjalizacji i zmiany stanu:
     https://reactjs.org/docs/react-component.html
 
 ```javascript
-    Mounting
-    These methods are called when an instance of a component is being created and inserted into the DOM:
+Mounting
+These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
 
-    constructor()
-    componentWillMount()
-    render()
-    componentDidMount()
-    Updating
-    An update can be caused by changes to props or state. These methods are called when a component is being re-rendered:
+constructor()
+static getDerivedStateFromProps()
+render()
+componentDidMount()
 
-    componentWillReceiveProps()
-    shouldComponentUpdate()
-    componentWillUpdate()
-    render()
-    componentDidUpdate()
-    Unmounting
-    This method is called when a component is being removed from the DOM:
+Updating
+An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:
 
-    componentWillUnmount()
-    Error Handling
-    This method is called when there is an error during rendering, in a lifecycle method,
-     or in the constructor of any child component.
+static getDerivedStateFromProps()
+shouldComponentUpdate()
+render()
+getSnapshotBeforeUpdate()
+componentDidUpdate()
 
-    componentDidCatch()
+Unmounting
+This method is called when a component is being removed from the DOM:
+
+componentWillUnmount()
+Error Handling
+These methods are called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+
+static getDerivedStateFromError()
+componentDidCatch()
+Other APIs
+Each component also provides some other APIs:
+
+setState()
+forceUpdate()
+
+
 ```
 
 ## Zadanie 5 - Post Component
@@ -407,15 +416,18 @@ Metody z cyklu życia komponentu do inicjalizacji i zmiany stanu:
     };
 ```
 ## Zadanie 7 - Filtrowanie 
+
 1. Wykorzystując zdobyte doświadczenie stwórz komponent,
    który będzie zwracał text, po którym będziesz flitrować posty po polu `username`.
 2. Rekordy powinny się filtrować niezależnie od wielkości liter wpisanych do filtra.
    
 ```javascript
-posts.filter(post => filterValue === '' || post.username.indexOf(filterValue) > -1);
+posts.filter(post => filterValue === '' || post.username.toLowerCase().indexOf(filterValue.toLowerCase()) > -1);
 // filtrowanie postów po przekazanej wartości
 ```
+
 ## Zadanie 8 - Routing
+
 1. Zainstaluj paczkę react-router-dom
 `npm i -S react-router-dom`
 2. Zaimportuj BrowserRouter, Link oraz Route 
@@ -425,6 +437,7 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 3. Stwórz dodatkowy komponent, do którego będzie można nawigować. Może być Prosty `Hello world!`.
 4. Jeden komponent musi mieć przekazany jakiś parametr, a drugi może zostać wygenerowany domyślnie.
 5. Skonfiguruj routing
+
 ```javascript
 const Routing = () =>
  <Router>
@@ -441,7 +454,9 @@ const Routing = () =>
 
 ReactDOM.render(<Routing />, document.getElementById('app')); 
 ```
+
 ## Bonus stage
+
 1. Zainstaluj json-server
     `npm i -g json-server`
 2. Stwórz plik bazy danych dla postów w katologu `database`.

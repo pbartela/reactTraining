@@ -3,18 +3,17 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
 
-import MainScene from './scenes/Main/';
-import MainApi from './scenes/MainApi/';
+import MainScene from './scenes/Main';
+import Second from './scenes/Second';
 
-
-const MainApiWithProps = () => <MainApi title='Api main scene' />;
+const SecondWithProps = () => <Second title='Second title'>Second Content</Second>
 
 const Routing = () =>
     <Router>
         <div>
             <ul>
                 <li><Link to='/'>Main</Link></li>
-                <li><Link to='/api'>Api Main</Link></li>
+                <li><Link to='/api'>Second</Link></li>
             </ul>
 
             <hr />
@@ -25,7 +24,7 @@ const Routing = () =>
             />
             <Route
                 path='/api'
-                render={MainApiWithProps}
+                render={SecondWithProps}
             />
         </div>
     </Router>;
