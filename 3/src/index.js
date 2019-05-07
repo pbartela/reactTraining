@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainScene from  './scenes/main';
+import MainScene from  './scenes/Main';
 import avatar from './img/avatar_2x.png';
-import styles from './Main.module.css';
+import styles from './Index.module.css';
 const Main1 =
     <MainScene className='container-fluid'>
         I'm here!

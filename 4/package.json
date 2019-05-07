@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "classnames": "^2.2.5",
-    "lodash": "^4.17.4",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "^1.1.1",
-    "valid-url": "^1.0.9"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,6 +14,18 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint-config-standard-react": "^6.0.0"
+    "eslint-config-standard-react": "^7.0.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

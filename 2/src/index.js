@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainScene from  './scenes/main';
+import MainScene from  './scenes/Main';
 
 const Main1 =
     <MainScene>

@@ -225,8 +225,9 @@ https://react-cn.github.io/react/tips/style-props-value-px.html
    `import avatar from './img/avatar.png';`,
    następnie użyj
    `<img alt='avatar' src={avatar} />`
-   
+
 ## Zadanie 4 - TextArea
+
 1. Stwórz w osobnym pliku komponent, zawierąjący w sobie dwa pola (htmlowy element input)
    Pierwszy będzie służył do wpisania nazwy użytkownika (username),
      a w drugim użytkownik poda adres do avatara, którego adres znajdzie w googlach.
@@ -235,19 +236,23 @@ https://react-cn.github.io/react/tips/style-props-value-px.html
     Zwrócone dane zapisz w obiekcie stanu komponentu.
 
 Zdefiniuj stan początkowy w konstruktorze:
+
 ```javascript
 constructor(props){
     super(props);
-    this.state ={
+    this.state = {
+        post: {
             value: '',
             username: '',
             image:''
-    }
+        }
+    }  
 }
 ```
 
 Stwórz trzy metody (dla każdego pola z osobna),
  które pobiorą dane ze stworzonych przez Ciebie pól i zapiszą w stanie komponentu
+
 ```javascript
 handleOnChangeMessageText(event) {
     this.setState({value: event.target.value});
@@ -255,6 +260,7 @@ handleOnChangeMessageText(event) {
 ```
 
 W pliku `MainScene.js` stwórz definicję metody, która przekazana do komponentu pobierze dane:
+
 ```javascript
 handleSubmit = (post) => {
     this.setState({
@@ -262,12 +268,15 @@ handleSubmit = (post) => {
     })
 }
 ```
+
 Metoda przekazana do komponentu:
+
 ```javascript
 <TextArea onHandleSubmit={this.handleSubmit}></TextArea>
-
 ```
+
 Wróć do pliku `TextArea.js` i obsłuż przekazną funkcję:
+
 ```javascript
 handleOnSubmitPost(event) {
         event.preventDefault();
@@ -280,10 +289,12 @@ handleOnSubmitPost(event) {
         });
         this.setState({
             value: '' // czyścimy text posta po wysłaniu
-        });    
+        });
 }
 ```
+
 Sprawdź czy przekazany props jest funkcją:
+
 ```javascript
     TextArea.propTypes = {
         onHandleSubmit: PropTypes.func.isRequired
@@ -291,6 +302,7 @@ Sprawdź czy przekazany props jest funkcją:
 ```
 
 Przykłady ustawiania stanu komponentu:
+
 ```javascript
 this.state = {
     text:''           // inicjalizacja stanu
@@ -304,8 +316,8 @@ this.setState({
 })
 
 this.setState(prevState=> {
-   text: prevState.text + 'new' 
-})       
+   text: prevState.text + 'new'
+})
 
 this.setState((state, props) => {})
 ```
@@ -313,6 +325,7 @@ this.setState((state, props) => {})
 2. W `MainScene` wyświetlaj dane otrzymane z `TextArea`
 przy pomocy zdefiniowanej już metody `handleSubmit`
     Przykład metody render:
+
 ```javascript
 render() {
     const { post } = this.state; 
@@ -329,8 +342,10 @@ render() {
     )
 }
 ```
+
 Metody z cyklu życia komponentu do inicjalizacji i zmiany stanu:
     https://reactjs.org/docs/react-component.html
+
 ```javascript
     Mounting
     These methods are called when an instance of a component is being created and inserted into the DOM:
@@ -359,21 +374,26 @@ Metody z cyklu życia komponentu do inicjalizacji i zmiany stanu:
 ```
 
 ## Zadanie 5 - Post Component
+
 1. Stwórz w osobnym pliku komponent, który będzie odpowiedzialny za wyświetlanie
    danych z poprzedniego zadania.
 2. Zaimportuj go w `MainScene` i przekaż do niego dane do wyświetlania.
 3. Dodaj metodę, która umożliwia zbieranie postów do tablicy
    i użyj jej do wyegenerowania więcej niż jednego postu.
    Zwróć uwagę, że dane trzymane w state znikają po odświeżeniu strony.
+
    Wykorzystaj localStorage do trzymania danych.
+
 ```javascript 
     posts.map(post => <Post key={todo.id}>{todo.text}</Post>) 
     // mapowanie tablicy obiektów na element HTMLowy
-    
+
     localStorage.setItem(key, JSON.stringify(data)); //zapisywanie danych do localstorage
-    JSON.parse(localStorage.getItem(key));    //odczytywanie danych 
+    JSON.parse(localStorage.getItem(key));    //odczytywanie danych
 ```
+
 ## Zadanie 6 - Posts Component
+
 1. Opakuj mapowanie `Post` w większy komponent `Posts`, który jako Prop będzie otrzymywać tablicę postów.
 2. Zweryfikuj czy tablica postów przekazywana do komponentu zawiera wszystkie potrzebne pola.
 
