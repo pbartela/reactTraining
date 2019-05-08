@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint instrukcja.md; eslint */**/*.jsx",
     "lint:md": "eslint --ext md .",
-    "lint:jsx": "eslint */**/*.jsx"
+    "lint:jsx": "eslint */**/*.jsx",
+    "server": "json-server --host 10.57.238.63 database/db.json --port 3333"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "eslint": "^5.16.0",
     "eslint-config-standard-react": "^7.0.2",
     "eslint-plugin-markdown": "^1.0.0",
-    "eslint-plugin-react": "^7.13.0"
+    "eslint-plugin-react": "^7.13.0",
+    "json-server": "^0.14.2"
   }
 }
