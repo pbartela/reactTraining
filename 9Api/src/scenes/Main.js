@@ -1,64 +1,54 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Posts from './../components/PostsComponent';
 import TextArea from './../components/TextAreaComponent';
 import TextFilter from './../components/TextFilter';
+import isEqual from 'lodash/isEqual';
+import { addPost, getPosts } from './../api/postsApi'
 
-class MainScene extends Component {
-    constructor(props){
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleFilterChange =  this.handleFilterChange.bind(this);
-        this.state = {
-            posts: [],
-            filterValue: ''
+function MainScene (props) {
+    const [posts, setPosts] = useState([]);
+    const [filterValue, setFilterValue] = useState('');
+
+    useEffect(() => {
+        async function fetchData () {
+            const loadedPosts = await getPosts();
+            const postsJson = await loadedPosts.json();
+            console.log('DEBUG oko: ');
+            console.log('DEBUG posts: ', posts);
+            console.log('DEBUG postsJson: ', postsJson);
+            setPosts(postsJson);
         }
-    }    
+        fetchData();
+    }, [posts]);
 
-    componentDidMount() {
-        const posts = JSON.parse(localStorage.getItem('posts'))
-        posts && this.setState({
-            posts: posts
-        });
+    async function handleSubmit(post) {
+        await addPost(post);
+        setPosts(posts.concat([post]));
     }
 
-    handleSubmit(post) {
-        const { posts } = this.state;
-        const postArray = posts.concat(post);
-        localStorage.setItem('posts', JSON.stringify(postArray));
-        this.setState({
-            posts: postArray
-        });
+    function handleFilterChange(value = '') {
+        setFilterValue(value);
     }
-
-    handleFilterChange(value = '') {
-        this.setState({
-            filterValue: value
-        });
-    }
-
-    render() {
-        const { posts, filterValue } = this.state;
-        const { title } = this.props;
-        const filteredPosts = posts.filter(post => filterValue === '' || post.username.toLowerCase().indexOf(filterValue.toLowerCase()) > -1);
-        return (
-            <div className='container-fluid'>
-                <h1>{title}</h1>
+    const { title } = props;
+    const filteredPosts = posts.filter(post => filterValue === '' || post.username.toLowerCase().indexOf(filterValue.toLowerCase()) > -1);
+    return (
+        <div className='container-fluid'>
+            <h1>{title}</h1>
+            <div>
+                <Posts posts={filteredPosts} />
+            </div>
+            <div>
+                <TextArea onHandleSubmit={handleSubmit} />
                 <div>
-                    <Posts posts={filteredPosts} />
-                </div>
-                <div>
-                    <TextArea onHandleSubmit={this.handleSubmit} />
-                    <div>
-                        <label>
-                            Filter by username:    
-                        </label>    
-                        <TextFilter onChange={this.handleFilterChange} />
-                    </div>
+                    <label>
+                        Filter by username:    
+                    </label>    
+                    <TextFilter onChange={handleFilterChange} />
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 MainScene.defaultProps = {
