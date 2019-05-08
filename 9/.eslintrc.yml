@@ -1,0 +1,27 @@
+extends: 
+  - "standard-react"
+env:
+  browser: true
+plugins:
+  - "react"
+  - "markdown"
+  - "react-hooks"
+rules:
+  indent:
+    - 2
+    - 4
+    - SwitchCase: 0
+  react/jsx-space-before-closing: 0
+  react/sort-prop-types: 1
+  react/jsx-key: 1
+  react/jsx-handler-names: 1
+  react/sort-comp: 1
+  react/jsx-sort-props: 1
+  react/jsx-indent:
+    - 1
+    - 4
+  react/jsx-indent-props:
+    - 1
+    - 4
+  react-hooks/rules-of-hooks: "error"
+  react-hooks/exhaustive-deps: "warn"
