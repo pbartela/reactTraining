@@ -29,6 +29,7 @@ co należy poprawić.
  Przykłady znajdziesz poniżej:
 
 Dodaj na początku:
+
 ```javascript
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -36,6 +37,7 @@ import ReactDOM from 'react-dom';
 ```
 
 Stwórz komponent:
+
 ```javascript
 const MainScene = (props) => {
     return (
@@ -430,10 +432,13 @@ posts.filter(post => filterValue === '' || post.username.toLowerCase().indexOf(f
 
 1. Zainstaluj paczkę react-router-dom
 `npm i -S react-router-dom`
+
 2. Zaimportuj BrowserRouter, Link oraz Route 
+
 ```javascript
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 ```
+
 3. Stwórz dodatkowy komponent, do którego będzie można nawigować. Może być Prosty `Hello world!`.
 4. Jeden komponent musi mieć przekazany jakiś parametr, a drugi może zostać wygenerowany domyślnie.
 5. Skonfiguruj routing

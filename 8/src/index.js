@@ -24,7 +24,7 @@ const Routing = () =>
             />
             <Route
                 path='/api'
-                render={SecondWithProps}
+                render={SecondWithPropsj}
             />
         </div>
     </Router>;
