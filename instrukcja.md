@@ -460,12 +460,46 @@ const Routing = () =>
 ReactDOM.render(<Routing />, document.getElementById('app')); 
 ```
 
-## Bonus stage
+## Zadanie 9 - React Hooks
 
-1. Zainstaluj json-server
-    `npm i -g json-server`
-2. Stwórz plik bazy danych dla postów w katologu `database`.
-3. Stwórz piki zawierające metody api, zaimportuj je i użyj zamiast zapisywania do localStorage.
+1. Skopiuj zadanie 8 do osobnego folderu
+2. Przepisz Main scene na hooki,
+jeżęli zdążysz to wszystkie.
+
+
+
+## Zadanie 10 - Komunikacja z api z poziomu komponentu
+
+1. Skopiuj zadanie 8 do osobnego folderu.
+2. Zamień metody działające na local storege na 
+
+```javascript
+const apiEndpoiint = 'http://10.57.238.63:3333/posts';
+
+const getPosts = async () => {
+    return await fetch(apiEndpoiint);
+}
+
+const addPost = async (data) => {
+    return await fetch(apiEndpoiint, {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(data)
+    });
+}
+
+export {
+    addPost,
+    getPosts
+}
+```
+
+
+---
+Stawianie mocka api
 
 Uruchom serwer w osobnym terminalu: `json-server --watch database/db.json --port 3001`
 
