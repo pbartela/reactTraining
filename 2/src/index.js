@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainScene from  './scenes/main';
-import './index.css';
+import MainScene from  './scenes/Main';
 
 const Main1 =
-    <MainScene className='container-fluid'>
+    <MainScene>
         I'm here!
     </MainScene>;
 const Main2 = () => {
@@ -12,6 +11,8 @@ const Main2 = () => {
         <div>
             {Main1}
             <MainScene>I'm under!</MainScene>
+            {/*<MainScene></MainScene> this is equal to line below*/ }
+            <MainScene />
         </div> 
     );
 };

@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "value": "Some lorem ipsum text",
+      "username": "Johny",
+      "image": ""
+    },
+    {
+      "username": "Okoń",
+      "image": "https://i.pinimg.com/236x/eb/f5/8d/ebf58dd628c735ec63f6663fd4df43af--avatar.jpg",
+      "value": "Hasło: Okoń!",
+      "id": 2
+    }
+  ]
+}
