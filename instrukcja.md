@@ -15,8 +15,8 @@ co należy poprawić.
 
 ```javascript
     npm install -g create-react-app
-    create-react-app reactTraining
-    cd reactTraining/
+    create-react-app react-training
+    cd react-training/
     npm i -S prop-types
     npm start
 ```
