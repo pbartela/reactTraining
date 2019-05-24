@@ -243,11 +243,9 @@ Zdefiniuj stan początkowy w konstruktorze:
 constructor(props){
     super(props);
     this.state = {
-        post: {
             value: '',
             username: '',
             image:''
-        }
     }  
 }
 ```
