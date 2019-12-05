@@ -4,11 +4,11 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
-    "lodash": "^4.17.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "^3.0.0",
+    "lodash": "^4.17.15",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.3.0",
     "valid-url": "^1.0.9"
   },
   "scripts": {
@@ -19,8 +19,8 @@
     "lint": "eslint src/**/*.js"
   },
   "devDependencies": {
-    "eslint-config-standard-react": "^7.0.2",
-    "eslint-plugin-react-hooks": "^1.6.0"
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-react-hooks": "^2.3.0"
   },
   "browserslist": {
     "production": [
